@@ -34,7 +34,7 @@ cd ~/build
 git clone https://github.com/Michae11s/dots.git
 cd dots
 ./deployDots.sh
-mv ./.fehbg ~/
+cp ./.fehbg ~/
 ~/.fehbg
 ln -sf ~/build/dots/.local/bin/ ~/.local/bin
 ln -sf ~/.local/bin/ ~/bin
