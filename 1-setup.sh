@@ -7,7 +7,9 @@
 #  ██║  ██║██║  ██║╚██████╗██║  ██║   ██║   ██║   ██║   ╚██████╔╝███████║
 #  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
 #-------------------------------------------------------------------------
+cd /root/GraniteArch
 source ./settings
+source ./Pkgs
 echo "--------------------------------------"
 echo "--          Network Setup           --"
 echo "--------------------------------------"
@@ -191,12 +193,11 @@ echo -e "\nInstalling Base System\n"
 #'zsh-autosuggestions'
 #)
 
-source ./Pkgs
-sudo pacman -S "${BASEPKGS[@]}" --noconfirm --needed
+sudo pacman -S ${BASEPKGS[@]} --noconfirm --needed
 
 if [[ $GUI ]]; then
 	echo "INSTALLING GRAPHICAL ENVIRONMENT"
-	sudo pacman -S "${GUIPKGS[@]}" --noconfirm --needed
+	sudo pacman -S ${GUIPKGS[@]} --noconfirm --needed
 fi
 
 #
@@ -219,7 +220,6 @@ esac
 # Graphics Drivers find and install
 if lspci | grep -E "NVIDIA|GeForce"; then
     pacman -S nvidia --noconfirm --needed
-	nvidia-xconfig
 elif lspci | grep -E "Radeon"; then
     pacman -S xf86-video-amdgpu --noconfirm --needed
 elif lspci | grep -E "Integrated Graphics Controller"; then
@@ -227,7 +227,7 @@ elif lspci | grep -E "Integrated Graphics Controller"; then
 fi
 
 #add the user
-useradd -m -U wheel,libvirt,adm,rfkill,uucp -s /bin/bash $USER 
+useradd -m -G wheel,adm,rfkill,uucp -s /bin/bash $USER 
 echo -e $UPASS"\n"$UPASS | passwd $USER
 echo -e $RPASS"\n"$RPASS | passwd
 cp -R /root/GraniteArch /home/$USER/

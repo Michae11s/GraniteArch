@@ -12,10 +12,14 @@ source ./settings
 source ./Pkgs
 cd ~
 mkdir ~/.local
-mkdir ~/.local/bin
-ln -s ~/.local/bin/ ~/bin
 xdg-user-dirs-update
-echo -e "\nINSTALLING AUR SOFTWARE\n"
+
+#Setup gits
+git config --global user.email $GEMAIL
+git config --global user.name $GNAME
+git config --global credential.helper store
+
+echo -e "\nCloning Gits\n"
 # You can solve users running this script as root with this and then doing the same for the next for statement. However I will leave this up to you.
 
 echo "CLONING: AURACLE"
@@ -27,12 +31,13 @@ makepkg -si --noconfirm
 
 echo "Loading Dotfiles"
 cd ~/build
-git config --global credential.helper store
 git clone https://github.com/Michae11s/dots.git
 cd dots
 ./deployDots.sh
 mv ./.fehbg ~/
 ~/.fehbg
+ln -sf ~/build/dots/.local/bin/ ~/.local/bin
+ln -sf ~/.local/bin/ ~/bin
 
 echo "Loading the pacUpdt timer"
 cd ~/build/
@@ -70,16 +75,17 @@ sudo systemctl enable pacUpdt.timer
 #'snap-pac'
 #)
 
-echo "Installing AUR Packages"
+echo "Import spotify gpg key"
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 for PKG in "${AURPKGS[@]}"; do
 	cd ~/build
 	echo "****************************************************"
-	echo "******************Installing: "$PKG"****************"
+	echo "*** Installing: "$PKG" ***"
 	echo "****************************************************"
 	auracle clone $PKG
 	cd $PKG
 	makepkg -si --noconfirm
 done
 
-echo -e "\nDone!\n"
+echo -e "\nDone 2-user\n"
 exit
