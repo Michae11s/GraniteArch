@@ -58,18 +58,15 @@ export GUIPKGS=(
  'alsa-plugins' #sound
  'alsa-utils'
  'ark'
- 'audiocd-kio'
  'pulseaudio'
  'pulseaudio-alsa'
- 'pulseaudio-bluetooth'
- 'bluedevil' #bluetooth
+ 'pulseaudio-bluetooth' #bluetooth
  'bluez-libs'
  'bluez-utils'
  'dolphin' #grapical utils
  'gparted'
  'baobab'
  'alacritty'
- 'systemsettings'
  'gimp' #nice to have programs
  'vlc'
  'libreoffice'
@@ -82,6 +79,7 @@ export GUIPKGS=(
  'wine-mono'
  'winetricks'
  'lutris'
+ 'rofi'
 )
 
 export AURPKGS=(
