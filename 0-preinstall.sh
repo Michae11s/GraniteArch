@@ -16,7 +16,7 @@ timedatectl set-ntp true
 pacman -S --noconfirm pacman-contrib terminus-font
 setfont ter-v22b
 sed -i 's/^#Para/Para/' /etc/pacman.conf
-pacman -S --noconfirm curl rsync grub
+pacman -S --noconfirm curl rsync grub unzip
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 echo -e "-------------------------------------------------------------------------"
@@ -34,7 +34,7 @@ echo -e "-----------------------------------------------------------------------
 cd /etc/pacman.d/
 curl "https://archlinux.org/mirrorlist/?country=CA&country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on" -o "mirrorlist.new"
 sed -i 's/^#Server/Server/' 'mirrorlist.new'
-rankmirrors -n 10 mirrorlist.new mirrorlist
+rankmirrors -n 10 mirrorlist.new > mirrorlist
 cd /
 
 mkdir /mnt
@@ -104,11 +104,15 @@ fi
 echo "--------------------------------------"
 echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
-pacstrap /mnt base base-devel linux linux-firmware neovim git wget curl archlinux-keyring libnewt --noconfirm --needed
+pacstrap /mnt base base-devel linux linux-firmware neovim git wget curl archlinux-keyring libnewt unzip --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 echo "keyserver hkp://keyserver.ubuntu.com" >> /mnt/etc/pacman.d/gnupg/gpg.conf
 cp -R ${SCRIPT_DIR} /mnt/root/GraniteArch
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
+curl -L -O https://github.com/Michae11s/dots/archive/main.zip
+unzip main.zip
+mv dots-main /mnt/dots/
+
 echo "--------------------------------------"
 echo "--GRUB BIOS Bootloader Install&Check--"
 echo "--------------------------------------"
