@@ -105,7 +105,7 @@ echo "keyserver hkp://keyserver.ubuntu.com" >> /mnt/etc/pacman.d/gnupg/gpg.conf
 cp -R ${SCRIPT_DIR} /mnt/root/GraniteArch
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 curl -L -O https://github.com/Michae11s/dots/archive/main.zip
-unzip main.zip -q
+unzip main.zip
 mv dots-main /mnt/dots/
 
 echo "--------------------------------------"

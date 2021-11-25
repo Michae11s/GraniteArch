@@ -29,6 +29,6 @@ echo "UPASS="$UPASS >> settings
 read -p "Enter root pass:" RPASS
 echo "RPASS="$RPASS >> settings
 read -p "Email for Git:" GEMAIL
-echo "GEMAIL="$GEMAIL
+echo "GEMAIL="$GEMAIL >> settings
 read -p "Name for Git:" GNAME
-echo "GNAME="$GNAME
+echo "GNAME="$GNAME >> settings
