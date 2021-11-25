@@ -1,0 +1,101 @@
+#!/bin/bash
+BASEPKGS=(
+ 'neofetch' #necessary programs 
+ 'neovim'
+ 'vim' 
+ 'thefuck'
+ 'python'
+ 'git'
+ 'w3m'
+ 'jdk-openjpk'
+ 'python'
+ 'python-pip'
+ 'os-prober'
+ 'traceroute' #network utils
+ 'nmap'
+ 'iw'
+ 'iwd'
+ 'netctl'
+ 'dhcpcd'
+ 'networkmanager'
+ 'grub' #grub/boot 
+ 'grub-customizer' 
+ 'efibootmgr' 
+ 'which' #utils
+ 'wget' 
+ 'dialog'
+ 'unrar' 
+ 'util-linux' 
+ 'tree' 
+ 'unzip' 
+ 'xdg-user-dirs' 
+ 'exfat-utils'
+ 'gptfdisk'
+ 'openssh'
+ 'pacman-contrib'
+ 'picom'
+ 'qemu'
+ 'autoconf' # build
+ 'automake'
+ 'gcc'
+ 'terminus-font' # fonts
+)
+
+GUIPKGS=(
+ 'mesa' #xserver
+ 'xorg'
+ 'xorg-server'
+ 'xorg-apps'
+ 'xorg-drivers'
+ 'xorg-xkill'
+ 'xorg-xinit'
+ 'xterm'
+ 'lightdm' #desktop env
+ 'lightdm-gtk-greeter'
+ 'i3-gaps'
+ 'archlinux-wallpaper'
+ 'feh'
+ 'alsa-plugins' #sound
+ 'alsa-utils'
+ 'ark'
+ 'audiocd-kio'
+ 'pulseaudio'
+ 'pulseaudio-alsa'
+ 'pulseaudio-bluetooth'
+ 'bluedevil' #bluetooth
+ 'bluez-libs'
+ 'bluez-utils'
+ 'dolphin' #grapical utils
+ 'gparted'
+ 'baobab'
+ 'alacritty'
+ 'systemsettings'
+ 'gimp' #nice to have programs
+ 'vlc'
+ 'libreoffice'
+ 'gwenview'
+ 'p7zip'
+ 'steam'
+ 'cups' #printing
+ 'print-manager'
+ 'wine-gecko' #wine
+ 'wine-mono'
+ 'winetricks'
+ 'lutris'
+)
+
+AURPKGS=(
+ 'android-sdk-platform-tools'
+ 'i3-swallow-git'
+ 'spotify'
+ 'spicetify-cli'
+ 'flavours'
+ 'nerd-fonts-complete'
+ 'google-chrome'
+ 'cpupower-gui'
+ 'google-earth-pro'
+ 'nerd-fonts-complete'
+ 'polybar'
+ 'powder-toy'
+ 'ums'
+)
