@@ -197,6 +197,7 @@ sudo pacman -S "${BASEPKGS[@]}" --noconfirm --needed
 if [[ $GUI ]]; then
 	echo "INSTALLING GRAPHICAL ENVIRONMENT"
 	sudo pacman -S "${GUIPKGS[@]}" --noconfirm --needed
+	sudo systemctl enable lightdm
 fi
 
 #
