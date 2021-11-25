@@ -1,4 +1,10 @@
+#!/bin/bash
 echo "#!/bin/bash" > settings
+pacman -Sy
+pacman -S --noconfirm pacman-contrib terminus-font
+setfont ter-v22b
+
+
 echo "-------------------------------------------------"
 echo "-------select the install disk-------------------"
 echo "-------------------------------------------------"
