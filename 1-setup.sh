@@ -229,7 +229,8 @@ fi
 useradd -m -G wheel,adm,rfkill,uucp -s /bin/bash $USER 
 echo -e $UPASS"\n"$UPASS | passwd $USER
 echo -e $RPASS"\n"$RPASS | passwd
-cp -R /root/GraniteArch /home/$USER/
-chown -R $USER: /home/$USER/GraniteArch
+mkdir -p /home/$USER/build/
+cp -R /root/GraniteArch /home/$USER/build/
+chown -R $USER: /home/$USER/build
 echo $HNAME > /etc/hostname
 echo "127.0.0.1 "$HNAME >> /etc/hosts
