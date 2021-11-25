@@ -1,5 +1,5 @@
 #!/bin/bash
-BASEPKGS=(
+export BASEPKGS=(
  'neofetch' #necessary programs 
  'neovim'
  'vim' 
@@ -41,7 +41,7 @@ BASEPKGS=(
  'terminus-font' # fonts
 )
 
-GUIPKGS=(
+export GUIPKGS=(
  'mesa' #xserver
  'xorg'
  'xorg-server'
@@ -84,7 +84,7 @@ GUIPKGS=(
  'lutris'
 )
 
-AURPKGS=(
+export AURPKGS=(
  'android-sdk-platform-tools'
  'i3-swallow-git'
  'spotify'
@@ -98,4 +98,12 @@ AURPKGS=(
  'polybar'
  'powder-toy'
  'ums'
+ 'ttf-droid'
+ 'ttf-hack'
+ 'ttf-meslo'
+ 'ttf-roboto'
+ 'zoom'
+ 'dxvk-bin'
+ 'mangohud'
+ 'mangohub-common'
 )
