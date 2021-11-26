@@ -80,6 +80,9 @@ export GUIPKGS=(
  'winetricks'
  'lutris'
  'rofi'
+ 'breeze'
+ 'qt5ct'
+ 'lxappearance'
 )
 
 export AURPKGS=(
@@ -88,7 +91,7 @@ export AURPKGS=(
  'spotify'
  'spicetify-cli'
  'flavours'
- #'nerd-fonts-complete'
+ 'nerd-fonts-complete'
  'google-chrome'
  'cpupower-gui'
  'google-earth-pro'
@@ -98,4 +101,5 @@ export AURPKGS=(
  'zoom'
  'dxvk-bin'
  'mangohud'
+ 'i3lock-color'
 )
