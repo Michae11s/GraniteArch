@@ -87,5 +87,10 @@ for PKG in "${AURPKGS[@]}"; do
 	makepkg -si --noconfirm
 done
 
+#run inital flavours commands
+flavours update lists
+flavours update templates
+
+
 echo -e "\nDone 2-user\n"
 exit
