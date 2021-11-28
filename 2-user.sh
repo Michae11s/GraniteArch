@@ -88,9 +88,17 @@ for PKG in "${AURPKGS[@]}"; do
 done
 
 #run inital flavours commands
-flavours update lists
-flavours update templates
+flavours update all
+~/build/dots/deployDots.sh
 
+echo "*************************"
+echo "* Checking if in VMware *"
+echo "*************************"
+
+if [[ $(lspci | grep -c VMware) ]]; then
+	sudo pacman -S open-vm-tools gtkmm gtk2
+	sudo systemctl enable vmtoolsd
+fi
 
 echo -e "\nDone 2-user\n"
 exit
