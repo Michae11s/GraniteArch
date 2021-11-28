@@ -36,7 +36,7 @@ echo "       Setup Language to US and set locale       "
 echo "-------------------------------------------------"
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
-cp /dots/etc/* /etc/
+cp -r /dots/etc/* /etc/
 locale-gen
 
 pacman -Sy --noconfirm
