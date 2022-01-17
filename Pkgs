@@ -50,6 +50,7 @@ export GUIPKGS=(
  'xorg-xkill'
  'xorg-xinit'
  'xterm'
+ 'lxqt-policykit'
  'lightdm' #desktop env
  'lightdm-gtk-greeter'
  'lightdm-gtk-greeter-settings'
@@ -93,7 +94,7 @@ export AURPKGS=(
  'spotify'
  'spicetify-cli'
  'flavours'
- 'nerd-fonts-complete'
+# 'nerd-fonts-complete'
  'google-chrome'
  'cpupower-gui'
  'google-earth-pro'
