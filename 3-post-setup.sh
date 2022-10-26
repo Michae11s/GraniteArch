@@ -21,14 +21,15 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # ------------------------------------------------------------------------
 
-echo -e "\nEnabling Login Display Manager"
-systemctl enable lightdm.service
-#echo -e "\nSetup SDDM Theme"
-#cat <<EOF > /etc/sddm.conf
-#[Theme]
-#Current=Nordic
-#EOF
-
+if [[ $GUI ]]; then
+	echo -e "\nEnabling Login Display Manager"
+	systemctl enable lightdm.service
+	#echo -e "\nSetup SDDM Theme"
+	#cat <<EOF > /etc/sddm.conf
+	#[Theme]
+	#Current=Nordic
+	#EOF
+fi
 # ------------------------------------------------------------------------
 
 echo -e "\nEnabling essential services"

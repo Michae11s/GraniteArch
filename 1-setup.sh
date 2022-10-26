@@ -48,11 +48,20 @@ sudo pacman -S ${BASEPKGS[@]} --noconfirm --needed
 if [[ $GUI ]]; then
 	echo "INSTALLING GRAPHICAL ENVIRONMENT"
 	sudo pacman -S ${GUIPKGS[@]} --noconfirm --needed
+
+	# Graphics Drivers find and install
+	if lspci | grep -E "NVIDIA|GeForce"; then
+	    pacman -S nvidia --noconfirm --needed
+	elif lspci | grep -E "Radeon"; then
+	    pacman -S xf86-video-amdgpu --noconfirm --needed
+	elif lspci | grep -E "Integrated Graphics Controller"; then
+	    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils --needed --noconfirm
+	fi
 fi
 
 #
 # determine processor type and install microcode
-# 
+#
 proc_type=$(lscpu | awk '/Vendor ID:/ {print $3}')
 case "$proc_type" in
 	GenuineIntel)
@@ -65,19 +74,10 @@ case "$proc_type" in
 		pacman -S --noconfirm amd-ucode
 		proc_ucode=amd-ucode.img
 		;;
-esac	
-
-# Graphics Drivers find and install
-if lspci | grep -E "NVIDIA|GeForce"; then
-    pacman -S nvidia --noconfirm --needed
-elif lspci | grep -E "Radeon"; then
-    pacman -S xf86-video-amdgpu --noconfirm --needed
-elif lspci | grep -E "Integrated Graphics Controller"; then
-    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils --needed --noconfirm
-fi
+esac
 
 #add the user
-useradd -m -G wheel,adm,rfkill,uucp -s /bin/bash $USER 
+useradd -m -G wheel,adm,rfkill,uucp -s /bin/bash $USER
 echo -e $UPASS"\n"$UPASS | passwd $USER
 echo -e $RPASS"\n"$RPASS | passwd
 mkdir -p /home/$USER/build/

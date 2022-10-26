@@ -46,49 +46,23 @@ cd pacUpdt/
 makepkg -si --noconfirm
 sudo systemctl enable pacUpdt.timer
 
-#PKGS=(
-#'autojump'
-#'awesome-terminal-fonts'
-#'brave-bin' # Brave Browser
-#'dxvk-bin' # DXVK DirectX to Vulcan
-#'github-desktop-bin' # Github Desktop sync
-#'lightly-git'
-#'lightlyshaders-git'
-#'mangohud' # Gaming FPS Counter
-#'mangohud-common'
-#'nerd-fonts-fira-code'
-#'nordic-darker-standard-buttons-theme'
-#'nordic-darker-theme'
-#'nordic-kde-git'
-#'nordic-theme'
-#'noto-fonts-emoji'
-#'papirus-icon-theme'
-#'plasma-pa'
-#'ocs-url' # install packages from websites
-#'sddm-nordic-theme-git'
-#'snapper-gui-git'
-#'ttf-droid'
-#'ttf-hack'
-#'ttf-meslo' # Nerdfont package
-#'ttf-roboto'
-#'zoom' # video conferences
-#'snap-pac'
-#)
+if [[ $GUI ]]; then
+	echo "Import spotify gpg key"
+	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
+	for PKG in "${AURPKGS[@]}"; do
+		cd ~/build
+		echo "****************************************************"
+		echo "*** Installing: "$PKG" ***"
+		echo "****************************************************"
+		auracle clone $PKG
+		cd $PKG
+		makepkg -si --noconfirm
+	done
 
-echo "Import spotify gpg key"
-curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
-for PKG in "${AURPKGS[@]}"; do
-	cd ~/build
-	echo "****************************************************"
-	echo "*** Installing: "$PKG" ***"
-	echo "****************************************************"
-	auracle clone $PKG
-	cd $PKG
-	makepkg -si --noconfirm
-done
+	#run inital flavours commands
+	flavours update all
+fi
 
-#run inital flavours commands
-flavours update all
 ~/build/dots/deployDots.sh
 
 echo "*************************"
