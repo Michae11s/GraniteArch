@@ -46,7 +46,7 @@ cd pacUpdt/
 makepkg -si --noconfirm
 sudo systemctl enable pacUpdt.timer
 
-if [[ $GUI ]]; then
+if (( $GUI )); then
 	echo "Import spotify gpg key"
 	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 	for PKG in "${AURPKGS[@]}"; do

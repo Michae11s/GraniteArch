@@ -21,7 +21,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # ------------------------------------------------------------------------
 
-if [[ $GUI ]]; then
+if (( $GUI )); then
 	echo -e "\nEnabling Login Display Manager"
 	systemctl enable lightdm.service
 	#echo -e "\nSetup SDDM Theme"
