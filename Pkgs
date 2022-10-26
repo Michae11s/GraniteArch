@@ -38,6 +38,7 @@ export BASEPKGS=(
  'autoconf' # build
  'automake'
  'gcc'
+ 'zip'
  'terminus-font' # fonts
 )
 
