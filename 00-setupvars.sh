@@ -15,7 +15,7 @@ read DISK
 echo "DISK="$DISK >> settings
 echo ""
 read -p "Do you want a Graphical Environment [Y/n]:" GraphicAns
-case $GraphicAns in 
+case $GraphicAns in
 	y|Y|yes|Yes|YES|"") GUI=1 ;;
 	*) GUI=0 ;;
 esac
@@ -28,7 +28,28 @@ read -p "Enter userpass:" UPASS
 echo "UPASS="$UPASS >> settings
 read -p "Enter root pass:" RPASS
 echo "RPASS="$RPASS >> settings
+
+echo "Setting up git"
 read -p "Email for Git:" GEMAIL
 echo "GEMAIL="$GEMAIL >> settings
 read -p "Name for Git:" GNAME
 echo "GNAME="$GNAME >> settings
+
+echo "Detecting UEFI/BIOS"
+if [[ -d "/sys/firmware/efi" ]]; then
+	echo "EFI detected"
+else
+	echo "BIOS detected"
+fi
+read -p "Select EFI or BIOS install [0 - BIOS, 1 - UEFI]:" BOOTLOAD
+echo "BOOTLOAD="$BOOTLOAD >> settings
+
+VMWARE=0
+if [[ $(lspci | grep -c VMware) ]]; then
+	echo "VMware detected, would you like to install VMware-tools? [Y/n]:" Ans
+	case $Ans in
+		y|Y|yes|Yes|YES|"") VMWARE=1 ;;
+		*) VMWARE=0 ;;
+	esac
+fi
+echo "VMWARE="$VMWARE >> settings

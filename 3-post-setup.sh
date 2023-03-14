@@ -7,12 +7,13 @@
 #  ██║  ██║██║  ██║╚██████╗██║  ██║   ██║   ██║   ██║   ╚██████╔╝███████║
 #  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
 #-------------------------------------------------------------------------
-
+cd /root/GraniteArch
+source ./settings
 echo -e "\nFINAL SETUP AND CONFIGURATION"
 echo "--------------------------------------"
 echo "-- GRUB EFI Bootloader Install&Check--"
 echo "--------------------------------------"
-if [[ -d "/sys/firmware/efi" ]]; then
+if (( $BOOTLOAD )); then
 	grub-install --target x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 else
 	grub-install --target=i386-pc $DISK

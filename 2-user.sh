@@ -69,7 +69,7 @@ echo "*************************"
 echo "* Checking if in VMware *"
 echo "*************************"
 
-if [[ $(lspci | grep -c VMware) ]]; then
+if (( $VMWARE )); then
 	sudo pacman -S --noconfirm open-vm-tools gtkmm gtk2
 	sudo systemctl enable vmtoolsd
 fi
