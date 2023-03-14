@@ -46,7 +46,7 @@ echo "BOOTLOAD="$BOOTLOAD >> settings
 
 VMWARE=0
 if [[ $(lspci | grep -c VMware) ]]; then
-	echo "VMware detected, would you like to install VMware-tools? [Y/n]:" Ans
+	read -p "VMware detected, would you like to install VMware-tools? [Y/n]:" Ans
 	case $Ans in
 		y|Y|yes|Yes|YES|"") VMWARE=1 ;;
 		*) VMWARE=0 ;;
