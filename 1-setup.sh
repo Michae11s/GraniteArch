@@ -85,3 +85,7 @@ cp -R /root/GraniteArch /home/$USER/build/
 chown -R $USER: /home/$USER/build
 echo $HNAME > /etc/hostname
 echo "127.0.0.1 "$HNAME >> /etc/hosts
+
+if (( $SSHD )); then
+	systemctl enable sshd
+fi

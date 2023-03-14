@@ -29,6 +29,13 @@ echo "UPASS="$UPASS >> settings
 read -p "Enter root pass:" RPASS
 echo "RPASS="$RPASS >> settings
 
+read -p "Enable SSH server? [Y/n]:" Ans
+case $Ans in
+	y|Y|yes|Yes|YES|"") SSHD=1 ;;
+	*) SSHD=0 ;;
+esac
+echo "SSHD="$SSHD >> settings
+
 echo "Setting up git"
 read -p "Email for Git:" GEMAIL
 echo "GEMAIL="$GEMAIL >> settings

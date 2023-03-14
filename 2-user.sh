@@ -65,10 +65,6 @@ fi
 
 ~/build/dots/deployDots.sh
 
-echo "*************************"
-echo "* Checking if in VMware *"
-echo "*************************"
-
 if (( $VMWARE )); then
 	sudo pacman -S --noconfirm open-vm-tools gtkmm gtk2
 	sudo systemctl enable vmtoolsd
