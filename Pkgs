@@ -99,11 +99,11 @@ export AURPKGS=(
  'google-chrome'
  'cpupower-gui'
  'google-earth-pro'
- 'polybar'
+ 'polybar-git'
  'powder-toy'
  'ums'
  'zoom'
  'dxvk-bin'
- 'mangohud'
+ 'mangohud-git'
  'i3lock-color'
 )
