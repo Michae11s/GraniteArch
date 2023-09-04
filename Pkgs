@@ -73,6 +73,7 @@ export GUIPKGS=(
  'alacritty'
  'gimp' #nice to have programs
  'vlc'
+ 'ttf-hack-nerd' #needed for polybar
  'libreoffice'
  'gwenview'
  'p7zip'
